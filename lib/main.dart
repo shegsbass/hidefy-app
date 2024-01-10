@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hidefy/screens/homepage.dart';
+import 'package:hidefy/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,10 +25,10 @@ class MyApp extends StatelessWidget {
       title: 'Hidefy',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF0E0D17)),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
