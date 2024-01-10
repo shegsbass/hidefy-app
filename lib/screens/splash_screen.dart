@@ -2,6 +2,7 @@ import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:hidefy/constants/app_color.dart';
 import 'package:hidefy/screens/homepage.dart';
+import 'package:hidefy/screens/onboarding_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -14,7 +15,7 @@ class SplashScreen extends StatelessWidget {
       duration: const Duration(milliseconds: 1500),
       animationDuration: const Duration(milliseconds: 1000),
       onAnimationEnd: () => debugPrint("On Scale End"),
-      nextScreen: const HomeScreen(),
+      nextScreen: const OnboardingScreen(),
         childWidget: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

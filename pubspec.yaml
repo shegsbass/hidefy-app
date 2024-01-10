@@ -81,7 +81,7 @@ flutter:
         - asset: assets/fonts/montserrat_regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-    - family: Montserrat Alternatives
+    - family: Montserrat Alternates
       fonts:
         - asset: assets/fonts/montserratalternates_regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf

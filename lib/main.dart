@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hidefy/constants/app_color.dart';
 import 'package:hidefy/screens/homepage.dart';
 import 'package:hidefy/screens/splash_screen.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
 
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: Color(0xFF1A1A22), // Change this to your desired color
+        statusBarColor: AppColor.onBoardingBgColor, // Change this to your desired color
         statusBarIconBrightness: Brightness.light, // Change the icon color (dark or light)
       ),
     );
