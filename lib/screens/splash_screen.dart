@@ -1,5 +1,6 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hidefy/constants/app_color.dart';
 import 'package:hidefy/screens/homepage.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterSplashScreen.fadeIn(
-      backgroundColor: Color(0xFF0E0D17),
+      backgroundColor: AppColor.onBoardingBgColor,
       useImmersiveMode: true,
       duration: const Duration(milliseconds: 1500),
       animationDuration: const Duration(milliseconds: 1000),
