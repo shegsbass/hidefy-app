@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hidefy/constants/app_color.dart';
 
 import '../entities/onboarding_entity.dart';
+import 'homepage.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -106,7 +107,133 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       (index) => indicator(index, _currentPage == index)),
             ),
 
+            SizedBox(height: 103),
 
+
+            Container(
+              width: 390,
+              height: 80,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 19),
+
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        print('Skip tapped');
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
+                      },
+                    child: Text(
+                      'Skip',
+                      style: TextStyle(
+                        color: Color(0xFFE3E3E3),
+                        fontSize: 18,
+                        fontFamily: 'Montserrat Alternates',
+                        fontWeight: FontWeight.w600,
+                        height: 0.06,
+                        letterSpacing: 0.04,
+                      ),
+                    ),
+                    ),
+
+                    Container(
+                      width: 80,
+                      height: 80,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            left: 24.54,
+                            top: 0,
+                            child: Transform(
+                              transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(0.42),
+                              child: Container(
+                                width: 60.64,
+                                height: 60.64,
+                                decoration: ShapeDecoration(
+                                  shape: OvalBorder(
+                                    side: BorderSide(width: 1, color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          Positioned(
+                            left: 9.68,
+                            top: 9.68,
+                            child: Container(
+                              child: Image.asset('assets/icons/half_eclipse.png'),
+                              // width: 60.64,
+                              // height: 60.64,
+                              // decoration: ShapeDecoration(
+                              //   shape: OvalBorder(
+                              //     side: BorderSide(width: 1, color: Color(0xFF3A3A3A)),
+                              //   ),
+                              // ),
+                            ),
+                          ),
+
+                          if (_currentPage != 1)
+                          Positioned(
+                            left: 9.68,
+                            top: 9.68,
+                            child: Container(
+                              width: 60.64,
+                              height: 60.64,
+                              decoration: ShapeDecoration(
+                                shape: OvalBorder(
+                                  side: BorderSide(width: 1, color: Color(0xFF3A3A3A)),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          Positioned(
+                              left: 17,
+                              top: 18,
+                              child: Container(
+                                width: 46,
+                                height: 46,
+                                decoration: ShapeDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment(0.63, -0.78),
+                                    end: Alignment(-0.63, 0.78),
+                                    colors: [Color(0xFF5FCCF7), Color(0xFFAE76F5), Color(0xFFF18EF8)],
+                                  ),
+                                  shape: OvalBorder(),
+                                ),
+                              )
+                          ),
+
+                          Positioned(
+                            left: 30,
+                            top: 30,
+                              child: Container(
+                                width: 20.44,
+                                height: 20.44,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(),
+                                child: Stack(
+                                    children: [
+                                    Image.asset('assets/icons/arrow_front.png'),
+                                    ],
+                                ),
+                          ),
+                          ),
+                        ],
+                      ),
+                    )
+
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
