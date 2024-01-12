@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hidefy/constants/app_color.dart';
 import 'package:hidefy/screens/login_screen.dart';
+import 'package:hidefy/screens/utils/custom_account_question_text.dart';
 import 'package:hidefy/screens/utils/primary_button.dart';
 
 class GetStartedScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class GetStartedScreen extends StatelessWidget {
                     width: 390,
                     height: 54,
                     textColor: Colors.white,
-                    buttonColor: Color(0xFFA889E6),
+                    buttonColor: AppColor.primaryButtonColor,
                     onTap: (){
                       print('Button tapped!');
                       Navigator.of(context).push(
@@ -50,36 +51,20 @@ class GetStartedScreen extends StatelessWidget {
 
               SizedBox(height: 32),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-
-                  Text(
-                    'Have an account?',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'Montserrat Alternates',
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 0.02,
+              GestureDetector(
+                onTap: () {
+                  print('Create text clicked');
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => LoginScreen(),
                     ),
-                  ),
-
-                  SizedBox(width: 14),
-
-                  Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Color(0xFFA889E6),
-                      fontSize: 16,
-                      fontFamily: 'Montserrat Alternates',
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 0.02,
-                    ),
-                  ),
-                ],
-              ),
+                  );
+                },
+                child: CustomAccountQuestion(
+                    accountStatustext: 'Have an account?',
+                    authTypeText: 'Login',
+                ),
+              )
 
             ],
           ),
