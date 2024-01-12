@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hidefy/constants/app_color.dart';
+import 'package:hidefy/screens/get_started_screen.dart';
 
 import '../entities/onboarding_entity.dart';
 import 'homepage.dart';
@@ -125,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         print('Skip tapped');
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
+                            builder: (context) => GetStartedScreen(),
                           ),
                         );
                       },
@@ -145,6 +146,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Container(
                       width: 80,
                       height: 80,
+                      child: GestureDetector(
+                        onTap: () {
+                          print('Arrow tapped');
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => GetStartedScreen(),
+                            ),
+                          );
+                        },
                       child: Stack(
                         children: [
                           Positioned(
@@ -169,15 +179,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             top: 9.68,
                             child: Container(
                               child: Image.asset('assets/icons/half_eclipse.png'),
-                              // width: 60.64,
-                              // height: 60.64,
-                              // decoration: ShapeDecoration(
-                              //   shape: OvalBorder(
-                              //     side: BorderSide(width: 1, color: Color(0xFF3A3A3A)),
-                              //   ),
-                              // ),
                             ),
                           ),
+
 
                           if (_currentPage != 1)
                           Positioned(
@@ -211,6 +215,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               )
                           ),
 
+
                           Positioned(
                             left: 30,
                             top: 30,
@@ -227,7 +232,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                           ),
                         ],
+
                       ),
+                    )
                     )
 
                   ],
