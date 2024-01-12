@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hidefy/constants/app_color.dart';
 import 'package:hidefy/screens/login_screen.dart';
+import 'package:hidefy/screens/sign_up_screen.dart';
 import 'package:hidefy/screens/utils/custom_account_question_text.dart';
 import 'package:hidefy/screens/utils/primary_button.dart';
 
@@ -42,7 +43,7 @@ class GetStartedScreen extends StatelessWidget {
                       print('Button tapped!');
                       Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
+                              builder: (context) => SignupScreen(),
                           ),
                       );
                     }

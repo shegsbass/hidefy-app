@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hidefy/constants/app_color.dart';
 import 'package:hidefy/screens/onboarding_screen.dart';
+import 'package:hidefy/screens/sign_up_screen.dart';
+import 'package:hidefy/screens/utils/auth_screen_top_decor.dart';
 import 'package:hidefy/screens/utils/custom_account_question_text.dart';
 import 'package:hidefy/screens/utils/custom_textfield.dart';
 import 'package:hidefy/screens/utils/primary_button.dart';
@@ -21,79 +23,50 @@ class LoginScreen extends StatelessWidget {
               children: [
                 TopDecor(),
                 GreetingSection(),
+
                 SizedBox(height: 44),
+
                 GoogleLoginSection(),
+
                 SizedBox(height: 24),
-                CustomizedTextField(),
+
+                CustomTextField(
+                  hintText: 'Email address',
+                  prefixImgPath: Icon(
+                    Icons.email_outlined,
+                    color: Colors.white,
+                  ),
+                ),
+
                 SizedBox(height: 24),
-                PasswordTextField(),
+
+                PasswordTextField(hintText: 'Password'),
+
                 SizedBox(height: 12),
+
                 ForgotPasswordSection(),
+
                 SizedBox(height: 24),
-                CustomizedLoginButton(),
+
+                PrimaryButton(
+                  text: 'LOGIN',
+                  width: 390,
+                  height: 54,
+                  textColor: Colors.white,
+                  buttonColor: AppColor.primaryButtonColor,
+                  onTap: () {
+                    print('Button clicked');
+                  },
+                ),
+
                 SizedBox(height: 32),
+
                 AccountStatusSection()
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-class TopDecor extends StatelessWidget {
-  const TopDecor({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 19, right: 10),
-          child: Container(
-            width: 53,
-            height: 45,
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 0,
-                  top: 0,
-                  child: Container(
-                    width: 30,
-                    height: 30,
-                    decoration: ShapeDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment(0.63, -0.78),
-                        end: Alignment(-0.63, 0.78),
-                        colors: [
-                          Color(0xFF5FCCF7),
-                          Color(0xFFAE76F5),
-                          Color(0xFFF18EF8)
-                        ],
-                      ),
-                      shape: OvalBorder(),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 38,
-                  top: 30,
-                  child: Container(
-                    width: 15,
-                    height: 15,
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFEE91A6),
-                      shape: OvalBorder(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
@@ -152,13 +125,11 @@ class GoogleLoginSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                  'assets/images/google_logo.png',
+                'assets/images/google_logo.png',
                 width: 24,
                 height: 24,
               ),
-
               const SizedBox(width: 20),
-
               Text(
                 'Continue with Google',
                 style: TextStyle(
@@ -172,11 +143,9 @@ class GoogleLoginSection extends StatelessWidget {
             ],
           ),
         ),
-
         const SizedBox(height: 24),
-
         Text(
-            'OR',
+          'OR',
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -189,44 +158,32 @@ class GoogleLoginSection extends StatelessWidget {
   }
 }
 
-class CustomizedTextField extends StatelessWidget {
-  const CustomizedTextField({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomTextField(
-        hintText: 'Email address',
-        prefixImgPath: Icon(
-            Icons.person_outline_rounded,
-          color: Colors.white,
-        ),
-    );
-  }
-}
-
 class PasswordTextField extends StatefulWidget {
-  const PasswordTextField({super.key});
+  final String hintText;
+
+  const PasswordTextField({super.key, required this.hintText});
 
   @override
   State<PasswordTextField> createState() => _PasswordTextFieldState();
 }
 
 class _PasswordTextFieldState extends State<PasswordTextField> {
-  bool passwordVisible=false;
+  bool passwordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: TextField(
         obscureText: passwordVisible,
-        style: TextStyle(  // Add this style property
+        style: TextStyle(
+          // Add this style property
           color: Colors.white,
           fontSize: 16,
           fontFamily: 'Montserrat Alternates',
           fontWeight: FontWeight.w500,
         ),
         decoration: InputDecoration(
-          hintText: "Password",
+          hintText: widget.hintText,
           hintStyle: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -234,17 +191,17 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             fontWeight: FontWeight.w500,
           ),
           prefixIcon: Image.asset(
-              'assets/icons/lock_icon.png',
+            'assets/icons/lock_icon.png',
             width: 24,
             height: 24,
           ),
           suffixIcon: IconButton(
-            icon: Icon(
-                passwordVisible ? Icons.visibility : Icons.visibility_off),
+            icon:
+                Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
             color: Colors.white,
             onPressed: () {
               setState(
-                    () {
+                () {
                   passwordVisible = !passwordVisible;
                 },
               );
@@ -254,7 +211,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           filled: true,
           fillColor: AppColor.primaryColor,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0), // Set the corner radius here
+            borderRadius:
+                BorderRadius.circular(10.0), // Set the corner radius here
             borderSide: BorderSide.none,
           ),
         ),
@@ -288,24 +246,6 @@ class ForgotPasswordSection extends StatelessWidget {
   }
 }
 
-class CustomizedLoginButton extends StatelessWidget {
-  const CustomizedLoginButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return PrimaryButton(
-        text: 'GET STARTED',
-        width: 390,
-        height: 54,
-        textColor: Colors.white,
-        buttonColor: AppColor.primaryButtonColor,
-        onTap: (){
-          print('Button clicked');
-        }
-    );
-  }
-}
-
 class AccountStatusSection extends StatelessWidget {
   const AccountStatusSection({super.key});
 
@@ -316,17 +256,14 @@ class AccountStatusSection extends StatelessWidget {
         print('Create text clicked');
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => OnboardingScreen(),
+            builder: (context) => SignupScreen(),
           ),
         );
       },
       child: CustomAccountQuestion(
-          accountStatustext: 'Don\'t have an account?',
-          authTypeText: 'Create',
+        accountStatustext: 'Don\'t have an account?',
+        authTypeText: 'Create',
       ),
     );
   }
 }
-
-
-
