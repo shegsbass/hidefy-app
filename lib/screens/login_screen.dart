@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hidefy/constants/app_color.dart';
+import 'package:hidefy/screens/utils/custom_textfield.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -16,6 +17,10 @@ class LoginScreen extends StatelessWidget {
             GreetingSection(),
             SizedBox(height: 44),
             GoogleLoginSection(),
+            SizedBox(height: 24),
+            CustomizedTextField(),
+            SizedBox(height: 24),
+            PasswordTextField()
           ],
         ),
       ),
@@ -176,3 +181,77 @@ class GoogleLoginSection extends StatelessWidget {
   }
 }
 
+class CustomizedTextField extends StatelessWidget {
+  const CustomizedTextField({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextField(
+        hintText: 'Email address',
+        prefixImgPath: Icon(Icons.person_outline_rounded),
+    );
+  }
+}
+
+
+class PasswordTextField extends StatefulWidget {
+  const PasswordTextField({super.key});
+
+  @override
+  State<PasswordTextField> createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  bool passwordVisible=false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextField(
+        obscureText: passwordVisible,
+        style: TextStyle(  // Add this style property
+          color: Colors.white,
+          fontSize: 16,
+          fontFamily: 'Montserrat Alternates',
+          fontWeight: FontWeight.w500,
+        ),
+        decoration: InputDecoration(
+          hintText: "Password",
+          hintStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontFamily: 'Montserrat Alternates',
+            fontWeight: FontWeight.w500,
+          ),
+          prefixIcon: Image.asset(
+              'assets/icons/lock_icon.png',
+            width: 24,
+            height: 24,
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+                passwordVisible ? Icons.visibility : Icons.visibility_off),
+            color: Colors.white,
+            onPressed: () {
+              setState(
+                    () {
+                  passwordVisible = !passwordVisible;
+                },
+              );
+            },
+          ),
+          alignLabelWithHint: false,
+          filled: true,
+          fillColor: AppColor.primaryColor,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0), // Set the corner radius here
+            borderSide: BorderSide.none,
+          ),
+        ),
+        keyboardType: TextInputType.visiblePassword,
+        textInputAction: TextInputAction.done,
+      ),
+    );
+  }
+}
